@@ -24,15 +24,7 @@ if (!$lockId) {
 }
 
 // 业务处理
+
 // 释放锁
 \Tinywan\Lock\RedisLock::release($lockName, $lockId);
 ```
-
-## Other
-
-```php
-vendor/bin/phpstan analyse src
-
-vendor/bin/php-cs-fixer fix src
-```
-
