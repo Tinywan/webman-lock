@@ -9,8 +9,8 @@ composer require tinywan/webman-lock
 ## 使用
 
 ```php
-$lockName = md5(time());
-$lockId = \Tinywan\Lock\RedisLock::createLock($lockName);
+$lockName = md5((string) time());
+$lockId = \Tinywan\Lock\RedisLock::acquire($lockName);
 if (!$lockId) {
     return '未获得锁标识，请稍后再试';
 }

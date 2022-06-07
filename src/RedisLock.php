@@ -20,12 +20,12 @@ class RedisLock
 
     /**
      * @desc: 获取锁
-     * @param string $lock_name
-     * @param int $acquire_time
-     * @param int $lock_timeout
+     * @param string $lock_name 锁名称
+     * @param int $acquire_time 获取锁时间
+     * @param int $lock_timeout 锁超时时间
      * @return bool|string
      */
-    public static function createLock(string $lock_name, int $acquire_time = 3, int $lock_timeout = 20)
+    public static function acquire(string $lock_name, int $acquire_time = 3, int $lock_timeout = 20)
     {
         $identifier = md5($_SERVER['REQUEST_TIME'] . mt_rand(1, 10000000));
         $lockName = self::DISTRIBUTED_CONCURRENT_LOCK . $lock_name;
