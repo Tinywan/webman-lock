@@ -1,0 +1,19 @@
+{
+  "name": "tinywan/webman-lock",
+  "type": "library",
+  "license": "MIT",
+  "description": "Webman plugin tinywan/webman-lock",
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tinywan\\Lock\\": "src"
+    }
+  },
+  "require-dev": {
+    "workerman/webman": "^1.0",
+    "friendsofphp/php-cs-fixer": "^3.6",
+    "phpstan/phpstan": "^1.4"
+  }
+}
