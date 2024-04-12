@@ -77,11 +77,15 @@ luascript;
             $scriptSha = Redis::script('load', $script);
             Redis::set(self::DISTRIBUTED_RELEASE_SCRIPT_SHA, $scriptSha);
         }
-        while (true) {
+        // 防止异常导致无限循环
+        $attempts = 10;
+        while ($attempts-- > 0) {
             $result = Redis::rawCommand('evalsha', $scriptSha, 1, $lockName, $identifier);
             if ($result == 1) {
                 return true;
             }
+            usleep(100000); // 等待100毫秒后重试
         }
+        return false;
     }
 }
